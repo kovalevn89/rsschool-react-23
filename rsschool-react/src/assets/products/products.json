@@ -12,7 +12,7 @@
 			"rating": 4.64,
 			"stock": 68,
 			"color": "grey",
-			"thumbnail": "./data/products/1/thumbnail.webp",
+			"thumbnail": "url('./data/products/1/thumbnail.webp')"
 		},
 		{
 			"id": 2,
@@ -26,7 +26,7 @@
 			"rating": 4.5,
 			"stock": 35,
 			"color": "black",
-			"thumbnail": "./data/products/2/thumbnail.webp",
+			"thumbnail": "url('./data/products/2/thumbnail.webp')"
 		},
 		{
 			"id": 3,
@@ -40,7 +40,7 @@
 			"rating": 4.4,
 			"stock": 74,
 			"color": "blue",
-			"thumbnail": "./data/products/3/thumbnail.webp",
+			"thumbnail": "url('./data/products/3/thumbnail.webp')"
 		},
 		{
 			"id": 4,
@@ -54,7 +54,7 @@
 			"rating": 4.6,
 			"stock": 32,
 			"color": "pink",
-			"thumbnail": "./data/products/4/thumbnail.webp",
+			"thumbnail": "url('./data/products/4/thumbnail.webp')"
 		},
 		{
 			"id": 5,
@@ -68,7 +68,7 @@
 			"rating": 4.6,
 			"stock": 45,
 			"color": "black",
-			"thumbnail": "./data/products/5/thumbnail.webp",
+			"thumbnail": "url('./data/products/5/thumbnail.webp')"
 		},
 		{
 			"id": 6,
@@ -82,8 +82,7 @@
 			"rating": 4.7,
 			"stock": 17,
 			"color": "red",
-			"thumbnail": "./data/products/6/thumbnail.webp",
-		},		
-	
-	],
+			"thumbnail": "url('./data/products/6/thumbnail.webp')"
+		}
+	]
 }
