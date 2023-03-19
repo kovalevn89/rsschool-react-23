@@ -26,11 +26,13 @@ function App() {
           About
         </NavLink>
       </header>
-      <Routes>
-        <Route path="/" element={<Mainpage />} />
-        <Route path="/about" element={<Aboutpage />} />
-        <Route path="*" element={<Errorpage />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Mainpage />} />
+          <Route path="/about" element={<Aboutpage />} />
+          <Route path="*" element={<Errorpage />} />
+        </Routes>
+      </main>
     </div>
   );
 }
