@@ -1,12 +1,12 @@
 import React from 'react';
 
 class Card extends React.Component<
-  { key: string; thumbnail: string; manufacturer: string; title: string; price: string },
+  { mkey: string; thumbnail: string; manufacturer: string; title: string; price: string },
   {}
 > {
   constructor(
     props: Readonly<{
-      key: string;
+      mkey: string;
       thumbnail: string;
       manufacturer: string;
       title: string;
@@ -18,7 +18,7 @@ class Card extends React.Component<
 
   render() {
     return (
-      <div key={this.props.key} className="product__item">
+      <div key={this.props.mkey} className="product__item">
         <div className="item__image" style={{ backgroundImage: this.props.thumbnail }}></div>
         <div className="item__info-block">
           <div className="info__caption">
