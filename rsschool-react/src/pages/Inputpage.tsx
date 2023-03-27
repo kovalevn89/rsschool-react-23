@@ -61,6 +61,7 @@ class Inputpage extends React.Component<{}, { text: string }> {
           }
         }}
       >
+        <h2>Input product card info:</h2>
         <BrandSelect brandref={this.inputBrand} />
         <InputProduct anyref={this.inputName} />
         <InputData anyref={this.inputDate} />
