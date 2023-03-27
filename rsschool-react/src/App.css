@@ -79,6 +79,13 @@ main {
   transition: transform 0.1s ease-in;
 }
 
+.item__image_v2 {
+  cursor: pointer;
+  width: 20%;
+  height: 20%;
+  margin: 0 auto;
+}
+
 .info__caption {
   min-height: 45px;
   margin: 0 0 0 5px;

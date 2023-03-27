@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.92% </span>
+                <span class="strong">47.34% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>84/179</span>
+                <span class='fraction'>89/188</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.92% </span>
+                <span class="strong">47.34% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>84/179</span>
+                <span class='fraction'>89/188</span>
             </div>
         
             
@@ -242,7 +242,16 @@
 <a name='L177'></a><a href='#L177'>177</a>
 <a name='L178'></a><a href='#L178'>178</a>
 <a name='L179'></a><a href='#L179'>179</a>
-<a name='L180'></a><a href='#L180'>180</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -301,6 +310,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -388,6 +401,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -405,6 +421,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -428,14 +446,14 @@ import InputData from '../components/inputpage/InputData';
 import InputSex from '../components/inputpage/InputSex';
 import InputFile from '../components/inputpage/InputFile';
 import InputAccept from '../components/inputpage/InputAccept';
-import Card from '../components/card/Card';
+import Card2 from '../components/card/Card2';
 &nbsp;
 interface ICard {
   brand: string;
   name: string;
   date: string;
   gender: string;
-  image: string;
+  image: File | null;
 }
 &nbsp;
 class Inputpage extends React.Component&lt;{}&gt; {
@@ -453,6 +471,8 @@ class Inputpage extends React.Component&lt;{}&gt; {
   private inputAccept: React.RefObject&lt;HTMLInputElement&gt;;
   private inputAcceptError: React.RefObject&lt;HTMLDivElement&gt;;
   private cardListRef: React.RefObject&lt;HTMLDivElement&gt;;
+&nbsp;
+  private controlFormRef: React.RefObject&lt;HTMLFormElement&gt;;
 &nbsp;
   state: { cardList: ICard[] };
 &nbsp;
@@ -472,6 +492,7 @@ class Inputpage extends React.Component&lt;{}&gt; {
     this.inputAccept = React.createRef();
     this.inputAcceptError = React.createRef();
     this.cardListRef = React.createRef();
+    this.controlFormRef = React.createRef();
     this.state = { cardList: [] };
   }
 &nbsp;
@@ -479,6 +500,7 @@ class Inputpage extends React.Component&lt;{}&gt; {
     return (
       &lt;div&gt;
         &lt;form
+          ref={this.controlFormRef}
           onSubmit={<span class="fstat-no" title="function not covered" >(event) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            event.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -554,17 +576,20 @@ class Inputpage extends React.Component&lt;{}&gt; {
 <span class="cstat-no" title="statement not covered" >            }</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >            if (isError === false) {</span>
-<span class="cstat-no" title="statement not covered" >              const card: ICard = {</span>
-<span class="cstat-no" title="statement not covered" >                brand: this.inputBrand.current!.value,</span>
-<span class="cstat-no" title="statement not covered" >                name: this.inputName.current!.value,</span>
-<span class="cstat-no" title="statement not covered" >                date: this.inputDate.current!.value,</span>
-<span class="cstat-no" title="statement not covered" >                gender: this.inputSexMale.current!.checked ? 'male' : 'female',</span>
-<span class="cstat-no" title="statement not covered" >                image: this.inputFile.current!.value,</span>
-<span class="cstat-no" title="statement not covered" >              };</span>
+<span class="cstat-no" title="statement not covered" >              if (this.inputFile.current!.files !== null) {</span>
+<span class="cstat-no" title="statement not covered" >                const card: ICard = {</span>
+<span class="cstat-no" title="statement not covered" >                  brand: this.inputBrand.current!.value,</span>
+<span class="cstat-no" title="statement not covered" >                  name: this.inputName.current!.value,</span>
+<span class="cstat-no" title="statement not covered" >                  date: this.inputDate.current!.value,</span>
+<span class="cstat-no" title="statement not covered" >                  gender: this.inputSexMale.current!.checked ? 'male' : 'female',</span>
+<span class="cstat-no" title="statement not covered" >                  image: this.inputFile.current!.files[0],</span>
+<span class="cstat-no" title="statement not covered" >                };</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >              const temp = this.state.cardList;</span>
-<span class="cstat-no" title="statement not covered" >              temp.push(card);</span>
-<span class="cstat-no" title="statement not covered" >              this.setState({ cardList: temp });</span>
+<span class="cstat-no" title="statement not covered" >                const temp = this.state.cardList;</span>
+<span class="cstat-no" title="statement not covered" >                temp.push(card);</span>
+<span class="cstat-no" title="statement not covered" >                this.setState({ cardList: temp });</span>
+<span class="cstat-no" title="statement not covered" >                this.controlFormRef.current!.reset();</span>
+<span class="cstat-no" title="statement not covered" >              }</span>
 <span class="cstat-no" title="statement not covered" >            }</span>
 <span class="cstat-no" title="statement not covered" >          }}</span>
         &gt;
@@ -582,15 +607,17 @@ class Inputpage extends React.Component&lt;{}&gt; {
 &nbsp;
           &lt;button type="submit"&gt;Submit&lt;/button&gt;
         &lt;/form&gt;
+        &lt;h2&gt;Cards list:&lt;/h2&gt;
         &lt;div ref={this.cardListRef}&gt;
           {this.state.cardList.map((item, index) =&gt; (
-<span class="cstat-no" title="statement not covered" >            &lt;Card</span>
+<span class="cstat-no" title="statement not covered" >            &lt;Card2</span>
 <span class="cstat-no" title="statement not covered" >              key={String(index + 1)}</span>
 <span class="cstat-no" title="statement not covered" >              mkey={String(index + 1)}</span>
-<span class="cstat-no" title="statement not covered" >              thumbnail={item.image}</span>
-<span class="cstat-no" title="statement not covered" >              manufacturer={item.brand}</span>
-<span class="cstat-no" title="statement not covered" >              title={item.name}</span>
-<span class="cstat-no" title="statement not covered" >              price={String(0)}</span>
+<span class="cstat-no" title="statement not covered" >              brand={item.brand}</span>
+<span class="cstat-no" title="statement not covered" >              name={item.name}</span>
+<span class="cstat-no" title="statement not covered" >              date={item.date}</span>
+<span class="cstat-no" title="statement not covered" >              gender={item.gender}</span>
+<span class="cstat-no" title="statement not covered" >              image={item.image}</span>
 <span class="cstat-no" title="statement not covered" >            /&gt;</span>
           ))}
         &lt;/div&gt;
@@ -607,7 +634,7 @@ export default Inputpage;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-27T14:10:51.824Z
+                at 2023-03-27T21:50:47.339Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

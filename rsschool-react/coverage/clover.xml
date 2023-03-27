@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1679926251927" clover="3.2.0">
-  <project timestamp="1679926251928" name="All files">
-    <metrics statements="558" coveredstatements="395" conditionals="27" coveredconditionals="24" methods="27" coveredmethods="23" elements="612" coveredelements="442" complexity="0" loc="558" ncloc="558" packages="5" files="14" classes="14"/>
+<coverage generated="1679953847482" clover="3.2.0">
+  <project timestamp="1679953847482" name="All files">
+    <metrics statements="626" coveredstatements="404" conditionals="28" coveredconditionals="24" methods="28" coveredmethods="23" elements="682" coveredelements="451" complexity="0" loc="626" ncloc="626" packages="5" files="15" classes="15"/>
     <package name="src">
       <metrics statements="63" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="App.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\App.tsx">
+      <file name="App.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\App.tsx">
         <metrics statements="50" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="2" count="0" type="stmt"/>
@@ -57,7 +57,7 @@
         <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
       </file>
-      <file name="main.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\main.tsx">
+      <file name="main.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\main.tsx">
         <metrics statements="13" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="2" count="0" type="stmt"/>
@@ -75,8 +75,8 @@
       </file>
     </package>
     <package name="src.components.card">
-      <metrics statements="43" coveredstatements="43" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-      <file name="Card.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\components\card\Card.tsx">
+      <metrics statements="102" coveredstatements="47" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="2"/>
+      <file name="Card.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\components\card\Card.tsx">
         <metrics statements="43" coveredstatements="43" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -122,10 +122,72 @@
         <line num="42" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
       </file>
+      <file name="Card2.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\components\card\Card2.tsx">
+        <metrics statements="59" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+      </file>
     </package>
     <package name="src.components.inputpage">
       <metrics statements="182" coveredstatements="182" conditionals="12" coveredconditionals="12" methods="12" coveredmethods="12"/>
-      <file name="BrandSelect.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\components\inputpage\BrandSelect.tsx">
+      <file name="BrandSelect.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\components\inputpage\BrandSelect.tsx">
         <metrics statements="32" coveredstatements="32" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -160,7 +222,7 @@
         <line num="31" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
       </file>
-      <file name="InputAccept.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\components\inputpage\InputAccept.tsx">
+      <file name="InputAccept.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\components\inputpage\InputAccept.tsx">
         <metrics statements="27" coveredstatements="27" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -190,7 +252,7 @@
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
       </file>
-      <file name="InputData.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\components\inputpage\InputData.tsx">
+      <file name="InputData.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\components\inputpage\InputData.tsx">
         <metrics statements="27" coveredstatements="27" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -220,7 +282,7 @@
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
       </file>
-      <file name="InputFile.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\components\inputpage\InputFile.tsx">
+      <file name="InputFile.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\components\inputpage\InputFile.tsx">
         <metrics statements="27" coveredstatements="27" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -250,7 +312,7 @@
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
       </file>
-      <file name="InputProduct.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\components\inputpage\InputProduct.tsx">
+      <file name="InputProduct.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\components\inputpage\InputProduct.tsx">
         <metrics statements="27" coveredstatements="27" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -280,7 +342,7 @@
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
       </file>
-      <file name="InputSex.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\components\inputpage\InputSex.tsx">
+      <file name="InputSex.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\components\inputpage\InputSex.tsx">
         <metrics statements="42" coveredstatements="42" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -328,7 +390,7 @@
     </package>
     <package name="src.components.search">
       <metrics statements="37" coveredstatements="32" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
-      <file name="Search.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\components\search\Search.tsx">
+      <file name="Search.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\components\search\Search.tsx">
         <metrics statements="37" coveredstatements="32" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -370,8 +432,8 @@
       </file>
     </package>
     <package name="src.pages">
-      <metrics statements="233" coveredstatements="138" conditionals="7" coveredconditionals="7" methods="7" coveredmethods="6"/>
-      <file name="Aboutpage.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\pages\Aboutpage.tsx">
+      <metrics statements="242" coveredstatements="143" conditionals="7" coveredconditionals="7" methods="7" coveredmethods="6"/>
+      <file name="Aboutpage.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\pages\Aboutpage.tsx">
         <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -387,7 +449,7 @@
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
       </file>
-      <file name="Errorpage.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\pages\Errorpage.tsx">
+      <file name="Errorpage.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\pages\Errorpage.tsx">
         <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -403,8 +465,8 @@
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
       </file>
-      <file name="Inputpage.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\pages\Inputpage.tsx">
-        <metrics statements="179" coveredstatements="84" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="3"/>
+      <file name="Inputpage.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\pages\Inputpage.tsx">
+        <metrics statements="188" coveredstatements="89" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -422,8 +484,8 @@
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
@@ -440,9 +502,9 @@
         <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
-        <line num="36" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
+        <line num="38" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="39" count="1" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
@@ -459,15 +521,15 @@
         <line num="52" count="1" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
         <line num="54" count="1" type="stmt"/>
-        <line num="55" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="55" count="1" type="stmt"/>
         <line num="56" count="1" type="stmt"/>
         <line num="57" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
+        <line num="58" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="59" count="1" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
         <line num="65" count="0" type="stmt"/>
         <line num="66" count="0" type="stmt"/>
@@ -551,13 +613,13 @@
         <line num="144" count="0" type="stmt"/>
         <line num="145" count="0" type="stmt"/>
         <line num="146" count="0" type="stmt"/>
-        <line num="147" count="1" type="stmt"/>
-        <line num="148" count="1" type="stmt"/>
-        <line num="149" count="1" type="stmt"/>
-        <line num="150" count="1" type="stmt"/>
-        <line num="151" count="1" type="stmt"/>
-        <line num="152" count="1" type="stmt"/>
-        <line num="153" count="1" type="stmt"/>
+        <line num="147" count="0" type="stmt"/>
+        <line num="148" count="0" type="stmt"/>
+        <line num="149" count="0" type="stmt"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="151" count="0" type="stmt"/>
+        <line num="152" count="0" type="stmt"/>
+        <line num="153" count="0" type="stmt"/>
         <line num="154" count="1" type="stmt"/>
         <line num="155" count="1" type="stmt"/>
         <line num="156" count="1" type="stmt"/>
@@ -568,24 +630,33 @@
         <line num="161" count="1" type="stmt"/>
         <line num="162" count="1" type="stmt"/>
         <line num="163" count="1" type="stmt"/>
-        <line num="164" count="0" type="stmt"/>
-        <line num="165" count="0" type="stmt"/>
-        <line num="166" count="0" type="stmt"/>
-        <line num="167" count="0" type="stmt"/>
-        <line num="168" count="0" type="stmt"/>
-        <line num="169" count="0" type="stmt"/>
-        <line num="170" count="0" type="stmt"/>
-        <line num="171" count="0" type="stmt"/>
-        <line num="172" count="1" type="stmt"/>
-        <line num="173" count="1" type="stmt"/>
-        <line num="174" count="1" type="stmt"/>
-        <line num="175" count="1" type="stmt"/>
-        <line num="176" count="1" type="stmt"/>
-        <line num="177" count="1" type="stmt"/>
-        <line num="178" count="1" type="stmt"/>
-        <line num="179" count="1" type="stmt"/>
+        <line num="164" count="1" type="stmt"/>
+        <line num="165" count="1" type="stmt"/>
+        <line num="166" count="1" type="stmt"/>
+        <line num="167" count="1" type="stmt"/>
+        <line num="168" count="1" type="stmt"/>
+        <line num="169" count="1" type="stmt"/>
+        <line num="170" count="1" type="stmt"/>
+        <line num="171" count="1" type="stmt"/>
+        <line num="172" count="0" type="stmt"/>
+        <line num="173" count="0" type="stmt"/>
+        <line num="174" count="0" type="stmt"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="176" count="0" type="stmt"/>
+        <line num="177" count="0" type="stmt"/>
+        <line num="178" count="0" type="stmt"/>
+        <line num="179" count="0" type="stmt"/>
+        <line num="180" count="0" type="stmt"/>
+        <line num="181" count="1" type="stmt"/>
+        <line num="182" count="1" type="stmt"/>
+        <line num="183" count="1" type="stmt"/>
+        <line num="184" count="1" type="stmt"/>
+        <line num="185" count="1" type="stmt"/>
+        <line num="186" count="1" type="stmt"/>
+        <line num="187" count="1" type="stmt"/>
+        <line num="188" count="1" type="stmt"/>
       </file>
-      <file name="Mainpage.tsx" path="E:\_RSSchool\_REACT\rsschool-react-23\rsschool-react\src\pages\Mainpage.tsx">
+      <file name="Mainpage.tsx" path="E:\RSSchool_react\rsschool-react-23\rsschool-react\src\pages\Mainpage.tsx">
         <metrics statements="28" coveredstatements="28" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>

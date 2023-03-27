@@ -5,14 +5,14 @@ import InputData from '../components/inputpage/InputData';
 import InputSex from '../components/inputpage/InputSex';
 import InputFile from '../components/inputpage/InputFile';
 import InputAccept from '../components/inputpage/InputAccept';
-import Card from '../components/card/Card';
+import Card2 from '../components/card/Card2';
 
 interface ICard {
   brand: string;
   name: string;
   date: string;
   gender: string;
-  image: string;
+  image: File | null;
 }
 
 class Inputpage extends React.Component<{}> {
@@ -30,6 +30,8 @@ class Inputpage extends React.Component<{}> {
   private inputAccept: React.RefObject<HTMLInputElement>;
   private inputAcceptError: React.RefObject<HTMLDivElement>;
   private cardListRef: React.RefObject<HTMLDivElement>;
+
+  private controlFormRef: React.RefObject<HTMLFormElement>;
 
   state: { cardList: ICard[] };
 
@@ -49,6 +51,7 @@ class Inputpage extends React.Component<{}> {
     this.inputAccept = React.createRef();
     this.inputAcceptError = React.createRef();
     this.cardListRef = React.createRef();
+    this.controlFormRef = React.createRef();
     this.state = { cardList: [] };
   }
 
@@ -56,6 +59,7 @@ class Inputpage extends React.Component<{}> {
     return (
       <div>
         <form
+          ref={this.controlFormRef}
           onSubmit={(event) => {
             event.preventDefault();
 
@@ -131,17 +135,20 @@ class Inputpage extends React.Component<{}> {
             }
 
             if (isError === false) {
-              const card: ICard = {
-                brand: this.inputBrand.current!.value,
-                name: this.inputName.current!.value,
-                date: this.inputDate.current!.value,
-                gender: this.inputSexMale.current!.checked ? 'male' : 'female',
-                image: this.inputFile.current!.value,
-              };
+              if (this.inputFile.current!.files !== null) {
+                const card: ICard = {
+                  brand: this.inputBrand.current!.value,
+                  name: this.inputName.current!.value,
+                  date: this.inputDate.current!.value,
+                  gender: this.inputSexMale.current!.checked ? 'male' : 'female',
+                  image: this.inputFile.current!.files[0],
+                };
 
-              const temp = this.state.cardList;
-              temp.push(card);
-              this.setState({ cardList: temp });
+                const temp = this.state.cardList;
+                temp.push(card);
+                this.setState({ cardList: temp });
+                this.controlFormRef.current!.reset();
+              }
             }
           }}
         >
@@ -159,15 +166,17 @@ class Inputpage extends React.Component<{}> {
 
           <button type="submit">Submit</button>
         </form>
+        <h2>Cards list:</h2>
         <div ref={this.cardListRef}>
           {this.state.cardList.map((item, index) => (
-            <Card
+            <Card2
               key={String(index + 1)}
               mkey={String(index + 1)}
-              thumbnail={item.image}
-              manufacturer={item.brand}
-              title={item.name}
-              price={String(0)}
+              brand={item.brand}
+              name={item.name}
+              date={item.date}
+              gender={item.gender}
+              image={item.image}
             />
           ))}
         </div>
