@@ -1,9 +1,13 @@
 import React from 'react';
 
-class BrandSelect extends React.Component<{ brandref: React.RefObject<HTMLSelectElement> }, {}> {
+class BrandSelect extends React.Component<
+  { brandref: React.RefObject<HTMLSelectElement>; brandErrorRef: React.RefObject<HTMLDivElement> },
+  {}
+> {
   constructor(
     props: Readonly<{
       brandref: React.RefObject<HTMLSelectElement>;
+      brandErrorRef: React.RefObject<HTMLDivElement>;
     }>
   ) {
     super(props);
@@ -19,6 +23,7 @@ class BrandSelect extends React.Component<{ brandref: React.RefObject<HTMLSelect
           <option value="adidas">Adidas</option>
           <option value="puma">Puma</option>
         </select>
+        <div className="error" ref={this.props.brandErrorRef}></div>
       </div>
     );
   }

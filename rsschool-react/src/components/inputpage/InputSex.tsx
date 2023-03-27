@@ -1,13 +1,18 @@
 import React from 'react';
 
 class InputSex extends React.Component<
-  { maleRef: React.RefObject<HTMLInputElement>; femaleRef: React.RefObject<HTMLInputElement> },
+  {
+    maleRef: React.RefObject<HTMLInputElement>;
+    femaleRef: React.RefObject<HTMLInputElement>;
+    sexErrorRef: React.RefObject<HTMLDivElement>;
+  },
   {}
 > {
   constructor(
     props: Readonly<{
       maleRef: React.RefObject<HTMLInputElement>;
       femaleRef: React.RefObject<HTMLInputElement>;
+      sexErrorRef: React.RefObject<HTMLDivElement>;
     }>
   ) {
     super(props);
@@ -28,6 +33,7 @@ class InputSex extends React.Component<
             <label>Female</label>
           </div>
         </fieldset>
+        <div className="error" ref={this.props.sexErrorRef}></div>
       </div>
     );
   }
