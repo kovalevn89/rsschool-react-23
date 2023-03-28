@@ -147,6 +147,7 @@ class Inputpage extends React.Component<{}> {
                 const temp = this.state.cardList;
                 temp.push(card);
                 this.setState({ cardList: temp });
+                alert('card added!!!');
                 this.controlFormRef.current!.reset();
               }
             }
