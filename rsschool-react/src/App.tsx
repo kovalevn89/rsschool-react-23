@@ -8,6 +8,7 @@ import Inputpage from './pages/Inputpage.jsx';
 
 function App() {
   const location = useLocation();
+
   return (
     <div className="App">
       <header>
