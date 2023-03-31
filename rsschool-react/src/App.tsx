@@ -1,6 +1,6 @@
 import './App.scss';
-import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
-
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Header from './components/header/Header';
 import Mainpage from './pages/Mainpage';
 import Aboutpage from './pages/Aboutpage.jsx';
 import Errorpage from './pages/Errorpage.jsx';
@@ -11,40 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <div className="logo__box">
-          <p>MovieBox</p>
-        </div>
-        <div className="current__page">
-          <p>{location.pathname}</p>
-        </div>
-        <div className="nav__menu">
-          <NavLink
-            to="/"
-            className={({ isActive, isPending }) =>
-              isPending ? 'pending' : isActive ? 'active' : ''
-            }
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/input"
-            className={({ isActive, isPending }) =>
-              isPending ? 'pending' : isActive ? 'active' : ''
-            }
-          >
-            Form
-          </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive, isPending }) =>
-              isPending ? 'pending' : isActive ? 'active' : ''
-            }
-          >
-            About
-          </NavLink>
-        </div>
-      </header>
+      <Header path={location.pathname} />
       <main>
         <Routes>
           <Route path="/" element={<Mainpage />} />
