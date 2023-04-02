@@ -11,7 +11,7 @@ class Search extends React.Component<{}, { text: string }> {
 
   render() {
     return (
-      <div>
+      <div className="search__input">
         <input
           type="text"
           placeholder="Search.."

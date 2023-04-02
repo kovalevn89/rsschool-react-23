@@ -1,22 +1,24 @@
 import React from 'react';
 import Search from '../components/search/Search';
-import Card from '../components/card/Card';
-import CardsData from '../assets/products/products.json';
+import Card3 from '../components/card/Card3';
+import FilmsData from '../data/films.json';
 
 class Mainpage extends React.Component {
   render() {
     return (
       <div data-testid="mainpage-id">
         <Search />
-        <div className="main__products">
-          {CardsData.products.map((item) => (
-            <Card
+        <div className="films__list">
+          {FilmsData.films.map((item) => (
+            <Card3
               key={String(item.id)}
-              mkey={String(item.id)}
-              thumbnail={item.thumbnail}
-              manufacturer={item.manufacturer}
+              uuid={String(item.id)}
               title={item.title}
-              price={String(item.price)}
+              description={item.description}
+              worldPremiere={item.worldPremiere}
+              genre={item.genre}
+              translationToRussian={item.translationToRussian}
+              image={item.cover}
             />
           ))}
         </div>
