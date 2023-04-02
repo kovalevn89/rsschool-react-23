@@ -49,26 +49,28 @@ class Card3 extends React.Component<
         ></img>
         <div className="film__info-block">
           <table className="film__info-table">
-            <tr className="film__info-table_row">
-              <td className="film__info-table_column-caption">Title:</td>
-              <td className="film__info-table_column-value">{this.props.title}</td>
-            </tr>
-            <tr className="film__info-table_row">
-              <td className="film__info-table_column-caption">Description:</td>
-              <td className="film__info-table_column-value">{this.props.description}</td>
-            </tr>
-            <tr className="film__info-table_row">
-              <td className="film__info-table_column-caption">World premiere:</td>
-              <td className="film__info-table_column-value">{this.props.worldPremiere}</td>
-            </tr>
-            <tr className="film__info-table_row">
-              <td className="film__info-table_column-caption">Genre:</td>
-              <td className="film__info-table_column-value">{this.props.genre}</td>
-            </tr>
-            <tr className="film__info-table_row">
-              <td className="film__info-table_column-caption">Translation to russian:</td>
-              <td className="film__info-table_column-value">{this.props.translationToRussian}</td>
-            </tr>
+            <tbody>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">Title:</td>
+                <td className="film__info-table_column-value">{this.props.title}</td>
+              </tr>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">Description:</td>
+                <td className="film__info-table_column-value">{this.props.description}</td>
+              </tr>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">World premiere:</td>
+                <td className="film__info-table_column-value">{this.props.worldPremiere}</td>
+              </tr>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">Genre:</td>
+                <td className="film__info-table_column-value">{this.props.genre}</td>
+              </tr>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">Translation to russian:</td>
+                <td className="film__info-table_column-value">{this.props.translationToRussian}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

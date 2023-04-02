@@ -1,189 +1,117 @@
+import { useForm, SubmitHandler } from 'react-hook-form';
 import React from 'react';
-import BrandSelect from '../components/inputpage/BrandSelect';
-import InputProduct from '../components/inputpage/InputProduct';
-import InputData from '../components/inputpage/InputData';
-import InputSex from '../components/inputpage/InputSex';
-import InputFile from '../components/inputpage/InputFile';
-import InputAccept from '../components/inputpage/InputAccept';
-import Card2 from '../components/card/Card2';
+// import BrandSelect from '../components/inputpage/BrandSelect';
+// import InputProduct from '../components/inputpage/InputProduct';
+// import InputData from '../components/inputpage/InputData';
+// import InputSex from '../components/inputpage/InputSex';
+// import InputFile from '../components/inputpage/InputFile';
+// import InputAccept from '../components/inputpage/InputAccept';
+// import Card2 from '../components/card/Card2';
+// import Card3 from '../components/card/Card3';
 
-interface ICard {
-  brand: string;
-  name: string;
-  date: string;
-  gender: string;
-  image: File | null;
+interface FormInputs {
+  title: string;
+  description: string;
+  genre: string;
+  worldPremiere: string;
+  translationToRussian: string;
 }
 
-class Inputpage extends React.Component<{}> {
-  private inputBrand: React.RefObject<HTMLSelectElement>;
-  private inputBrandError: React.RefObject<HTMLDivElement>;
-  private inputName: React.RefObject<HTMLInputElement>;
-  private inputNameError: React.RefObject<HTMLDivElement>;
-  private inputDate: React.RefObject<HTMLInputElement>;
-  private inputDateError: React.RefObject<HTMLDivElement>;
-  private inputSexMale: React.RefObject<HTMLInputElement>;
-  private inputSexFemale: React.RefObject<HTMLInputElement>;
-  private inputSexError: React.RefObject<HTMLDivElement>;
-  private inputFile: React.RefObject<HTMLInputElement>;
-  private inputFileError: React.RefObject<HTMLDivElement>;
-  private inputAccept: React.RefObject<HTMLInputElement>;
-  private inputAcceptError: React.RefObject<HTMLDivElement>;
-  private cardListRef: React.RefObject<HTMLDivElement>;
+const Inputpage = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormInputs>({ mode: 'onChange' });
 
-  private controlFormRef: React.RefObject<HTMLFormElement>;
+  const onSubmit: SubmitHandler<FormInputs> = (value) => {
+    console.log(JSON.stringify(value));
+  };
 
-  state: { cardList: ICard[] };
-
-  constructor(props: Readonly<{}>) {
-    super(props);
-    this.inputBrand = React.createRef();
-    this.inputBrandError = React.createRef();
-    this.inputName = React.createRef();
-    this.inputNameError = React.createRef();
-    this.inputDate = React.createRef();
-    this.inputDateError = React.createRef();
-    this.inputSexMale = React.createRef();
-    this.inputSexFemale = React.createRef();
-    this.inputSexError = React.createRef();
-    this.inputFile = React.createRef();
-    this.inputFileError = React.createRef();
-    this.inputAccept = React.createRef();
-    this.inputAcceptError = React.createRef();
-    this.cardListRef = React.createRef();
-    this.controlFormRef = React.createRef();
-    this.state = { cardList: [] };
-  }
-
-  render() {
-    return (
-      <div>
-        <form
-          ref={this.controlFormRef}
-          onSubmit={(event) => {
-            event.preventDefault();
-
-            let isError = false;
-
-            if (this.inputBrand.current !== null) {
-              if (this.inputBrandError.current !== null) {
-                if (this.inputBrand.current.value === 'choose') {
-                  this.inputBrandError.current.innerHTML = 'ERROR! please choose brand!';
-                  isError = true;
-                } else {
-                  this.inputBrandError.current.innerHTML = '';
-                }
-              }
-            }
-
-            if (this.inputName.current !== null) {
-              if (this.inputNameError.current !== null) {
-                if (this.inputName.current.value === '') {
-                  this.inputNameError.current.innerHTML = 'ERROR! please enter product name!';
-                  isError = true;
-                } else {
-                  this.inputNameError.current.innerHTML = '';
-                }
-              }
-            }
-
-            if (this.inputDate.current !== null) {
-              if (this.inputDateError.current !== null) {
-                if (this.inputDate.current.value === '') {
-                  this.inputDateError.current.innerHTML = 'ERROR! please choose arrival date!';
-                  isError = true;
-                } else {
-                  this.inputDateError.current.innerHTML = '';
-                }
-              }
-            }
-
-            if (this.inputSexMale.current !== null && this.inputSexFemale.current !== null) {
-              if (this.inputSexError.current !== null) {
-                if (
-                  this.inputSexMale.current.checked === false &&
-                  this.inputSexFemale.current.checked === false
-                ) {
-                  this.inputSexError.current.innerHTML = 'ERROR! please choose gender!';
-                  isError = true;
-                } else {
-                  this.inputSexError.current.innerHTML = '';
-                }
-              }
-            }
-
-            if (this.inputFile.current !== null) {
-              if (this.inputFileError.current !== null) {
-                if (this.inputFile.current.value === '') {
-                  this.inputFileError.current.innerHTML = 'ERROR! please choose file!';
-                  isError = true;
-                } else {
-                  this.inputFileError.current.innerHTML = '';
-                }
-              }
-            }
-
-            if (this.inputAccept.current !== null) {
-              if (this.inputAcceptError.current !== null) {
-                if (this.inputAccept.current.checked === false) {
-                  this.inputAcceptError.current.innerHTML = 'ERROR! please accept info!';
-                  isError = true;
-                } else {
-                  this.inputAcceptError.current.innerHTML = '';
-                }
-              }
-            }
-
-            if (isError === false) {
-              if (this.inputFile.current!.files !== null) {
-                const card: ICard = {
-                  brand: this.inputBrand.current!.value,
-                  name: this.inputName.current!.value,
-                  date: this.inputDate.current!.value,
-                  gender: this.inputSexMale.current!.checked ? 'male' : 'female',
-                  image: this.inputFile.current!.files[0],
-                };
-
-                const temp = this.state.cardList;
-                temp.push(card);
-                this.setState({ cardList: temp });
-                alert('card added!!!');
-                this.controlFormRef.current!.reset();
-              }
-            }
-          }}
-        >
-          <h2>Input product card info:</h2>
-          <BrandSelect brandref={this.inputBrand} brandErrorRef={this.inputBrandError} />
-          <InputProduct anyref={this.inputName} nameErrorRef={this.inputNameError} />
-          <InputData anyref={this.inputDate} dataErrorRef={this.inputDateError} />
-          <InputSex
-            maleRef={this.inputSexMale}
-            femaleRef={this.inputSexFemale}
-            sexErrorRef={this.inputSexError}
+  return (
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h2>Input product card info:</h2>
+        {/* TITLE */}
+        <div>
+          <label>Title:</label>
+          <input
+            {...register('title', {
+              required: 'Поле обязательно для заполнения',
+              minLength: {
+                value: 5,
+                message: 'Минимальная длинная 5 символов',
+              },
+            })}
           />
-          <InputFile fileRef={this.inputFile} fileErrorRef={this.inputFileError} />
-          <InputAccept acceptRef={this.inputAccept} acceptErrorRef={this.inputAcceptError} />
-
-          <button type="submit">Submit</button>
-        </form>
-        <h2>Cards list:</h2>
-        <div ref={this.cardListRef}>
-          {this.state.cardList.map((item, index) => (
-            <Card2
-              key={String(index + 1)}
-              mkey={String(index + 1)}
-              brand={item.brand}
-              name={item.name}
-              date={item.date}
-              gender={item.gender}
-              image={item.image}
-            />
-          ))}
+          <div className="error">{errors?.title && (errors?.title?.message || 'Error!!!')}</div>
         </div>
-      </div>
-    );
-  }
-}
+        {/* description */}
+        <div>
+          <label>Description:</label>
+          <input
+            {...register('description', {
+              required: 'Поле обязательно для заполнения',
+              minLength: {
+                value: 10,
+                message: 'Минимальная длинная 10 символов',
+              },
+            })}
+          />
+          <div className="error">
+            {errors?.description && (errors?.description?.message || 'Error!!!')}
+          </div>
+        </div>
+        {/* "worldPremiere": "10.09.1994", */}
+        <div>
+          <label>World Premiere:</label>
+          <input
+            type="date"
+            {...register('worldPremiere', {
+              required: 'Поле обязательно для заполнения',
+            })}
+          />
+          <div className="error">
+            {errors?.worldPremiere && (errors?.worldPremiere?.message || 'Error!!!')}
+          </div>
+        </div>
+        {/* genre */}
+        <div>
+          <label>Genre:</label>
+          <select {...register('genre', { required: 'Поле обязательно для заполнения' })}>
+            <option value="">Select genre</option>
+            <option value="Drama">Drama</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Crime">Crime</option>
+          </select>
+          <div className="error">{errors?.genre && (errors?.genre?.message || 'Error!!!')}</div>
+        </div>
+        {/* "translationToRussian": "yes", */}
+        <div>
+          <label>Translation to Russian:</label>
+          <input
+            type="radio"
+            value="dor1"
+            {...register('translationToRussian', { validate: { ch: (value) => value } })}
+          />
+          <label>yes</label>
+          <input type="radio" value="dor2" {...register('translationToRussian')} />
+          <label>no</label>
+          <div className="error">
+            {errors?.translationToRussian && (errors?.translationToRussian?.message || 'Error!!!')}
+          </div>
+        </div>
+        {/* "cover": "./covers/The_Shawshank_Redemption.webp" */}
+        {/* appruve */}
+        <button type="submit">Submit</button>
+      </form>
+      <h2>Cards list:</h2>
+    </div>
+  );
+};
 
 export default Inputpage;
