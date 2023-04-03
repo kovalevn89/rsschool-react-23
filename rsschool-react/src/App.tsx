@@ -6,7 +6,7 @@ import Aboutpage from './pages/Aboutpage.jsx';
 import Errorpage from './pages/Errorpage.jsx';
 import Inputpage from './pages/Inputpage.jsx';
 
-function App() {
+const App = () => {
   const location = useLocation();
 
   return (
@@ -22,6 +22,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;
