@@ -1,61 +1,58 @@
-import React from 'react';
 import { ICard } from '../types/types';
+import { useState, useEffect } from 'react';
 
-class Card extends React.Component<ICard> {
-  state: { imageSrc: string };
+const Card = (card: ICard) => {
+  const [imageSrc, changeText] = useState('');
 
-  constructor(props: Readonly<ICard>) {
-    super(props);
-    this.state = { imageSrc: '' };
-  }
-
-  render() {
-    if (typeof this.props.image !== 'string') {
-      if (this.state.imageSrc === '') {
+  useEffect(() => {
+    if (typeof card.image !== 'string') {
+      if (imageSrc === '') {
         const fr = new FileReader();
         fr.onload = () => {
-          this.setState({ imageSrc: fr.result });
+          if (typeof fr.result === 'string') {
+            changeText(fr.result);
+          }
         };
-        fr.readAsDataURL(this.props.image!);
+        fr.readAsDataURL(card.image!);
       }
     }
+  }, [imageSrc, card.image]);
 
-    return (
-      <div key={this.props.uuid} className="film__card">
-        <img
-          className="film__cover"
-          src={typeof this.props.image === 'string' ? this.props.image : this.state.imageSrc}
-          width="150"
-        ></img>
-        <div className="film__info-block">
-          <table className="film__info-table">
-            <tbody>
-              <tr className="film__info-table_row">
-                <td className="film__info-table_column-caption">Title:</td>
-                <td className="film__info-table_column-value">{this.props.title}</td>
-              </tr>
-              <tr className="film__info-table_row">
-                <td className="film__info-table_column-caption">Description:</td>
-                <td className="film__info-table_column-value">{this.props.description}</td>
-              </tr>
-              <tr className="film__info-table_row">
-                <td className="film__info-table_column-caption">World premiere:</td>
-                <td className="film__info-table_column-value">{this.props.worldPremiere}</td>
-              </tr>
-              <tr className="film__info-table_row">
-                <td className="film__info-table_column-caption">Genre:</td>
-                <td className="film__info-table_column-value">{this.props.genre}</td>
-              </tr>
-              <tr className="film__info-table_row">
-                <td className="film__info-table_column-caption">Translation to russian:</td>
-                <td className="film__info-table_column-value">{this.props.translationToRussian}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  return (
+    <div key={card.uuid} className="film__card">
+      <img
+        className="film__cover"
+        src={typeof card.image === 'string' ? card.image : imageSrc}
+        width="150"
+      ></img>
+      <div className="film__info-block">
+        <table className="film__info-table">
+          <tbody>
+            <tr className="film__info-table_row">
+              <td className="film__info-table_column-caption">Title:</td>
+              <td className="film__info-table_column-value">{card.title}</td>
+            </tr>
+            <tr className="film__info-table_row">
+              <td className="film__info-table_column-caption">Description:</td>
+              <td className="film__info-table_column-value">{card.description}</td>
+            </tr>
+            <tr className="film__info-table_row">
+              <td className="film__info-table_column-caption">World premiere:</td>
+              <td className="film__info-table_column-value">{card.worldPremiere}</td>
+            </tr>
+            <tr className="film__info-table_row">
+              <td className="film__info-table_column-caption">Genre:</td>
+              <td className="film__info-table_column-value">{card.genre}</td>
+            </tr>
+            <tr className="film__info-table_row">
+              <td className="film__info-table_column-caption">Translation to russian:</td>
+              <td className="film__info-table_column-value">{card.translationToRussian}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Card;
