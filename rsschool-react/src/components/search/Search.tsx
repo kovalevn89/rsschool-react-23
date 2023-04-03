@@ -1,37 +1,25 @@
 import React from 'react';
-import './Search.css';
+import { useState, useEffect } from 'react';
 
-class Search extends React.Component<{}, { text: string }> {
-  constructor(props: Readonly<{}>) {
-    super(props);
-    this.state = {
-      text: '',
-    };
-  }
+const Search = () => {
+  const [text, changeText] = useState(localStorage.getItem('searchbar') || '');
 
-  render() {
-    return (
-      <div className="search__input">
-        <input
-          type="text"
-          placeholder="Search.."
-          value={this.state.text}
-          onChange={(e) => {
-            this.setState({ text: e.target.value });
-            localStorage.setItem('searchbar', e.target.value);
-          }}
-        ></input>
-      </div>
-    );
-  }
+  useEffect(() => {
+    localStorage.setItem('searchbar', text);
+  }, [text]);
 
-  componentDidMount() {
-    const temp_text = localStorage.getItem('searchbar');
-
-    if (temp_text !== null) {
-      this.setState({ text: temp_text });
-    }
-  }
-}
+  return (
+    <div className="search__input">
+      <input
+        type="text"
+        placeholder="Search.."
+        value={text}
+        onChange={(e) => {
+          changeText(e.target.value);
+        }}
+      ></input>
+    </div>
+  );
+};
 
 export default Search;

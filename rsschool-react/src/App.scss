@@ -144,3 +144,14 @@ main {
     }
   }
 }
+
+.search__input{
+  input[type=text] {
+    float: center;
+    padding: 6px;
+    border: 2px solid black;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+  }
+}

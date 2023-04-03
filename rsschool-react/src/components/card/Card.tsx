@@ -1,30 +1,10 @@
 import React from 'react';
+import { ICard } from '../types/types';
 
-class Card extends React.Component<
-  {
-    uuid: string;
-    title: string;
-    description: string;
-    worldPremiere: string;
-    genre: string;
-    translationToRussian: string;
-    image: File | string;
-  },
-  {}
-> {
+class Card extends React.Component<ICard> {
   state: { imageSrc: string };
 
-  constructor(
-    props: Readonly<{
-      uuid: string;
-      title: string;
-      description: string;
-      worldPremiere: string;
-      genre: string;
-      translationToRussian: string;
-      image: File | string;
-    }>
-  ) {
+  constructor(props: Readonly<ICard>) {
     super(props);
     this.state = { imageSrc: '' };
   }
