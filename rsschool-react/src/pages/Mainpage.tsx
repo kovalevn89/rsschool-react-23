@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from '../components/search/Search';
-import Card3 from '../components/card/Card3';
+import Card3 from '../components/card/Card';
 import FilmsData from '../data/films.json';
 
 class Mainpage extends React.Component {

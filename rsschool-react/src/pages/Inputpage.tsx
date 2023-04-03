@@ -1,13 +1,6 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import React from 'react';
-// import BrandSelect from '../components/inputpage/BrandSelect';
-// import InputProduct from '../components/inputpage/InputProduct';
-// import InputData from '../components/inputpage/InputData';
-// import InputSex from '../components/inputpage/InputSex';
-// import InputFile from '../components/inputpage/InputFile';
-// import InputAccept from '../components/inputpage/InputAccept';
-// import Card2 from '../components/card/Card2';
-// import Card3 from '../components/card/Card3';
+import React, { useState } from 'react';
+import Card3 from '../components/card/Card';
 
 interface FormInputs {
   title: string;
@@ -15,9 +8,23 @@ interface FormInputs {
   genre: string;
   worldPremiere: string;
   translationToRussian: string;
+  accept: boolean;
+  cover: FileList;
+}
+
+interface IFilm {
+  id: number;
+  title: string;
+  description: string;
+  worldPremiere: string;
+  genre: string;
+  translationToRussian: string;
+  cover: File | string;
 }
 
 const Inputpage = () => {
+  const [filmDatas, addFilm] = useState<IFilm[]>([]);
+
   const {
     register,
     formState: { errors },
@@ -26,6 +33,17 @@ const Inputpage = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = (value) => {
     console.log(JSON.stringify(value));
+    console.log(value.cover[0]);
+    filmDatas.push({
+      id: filmDatas.length + 1,
+      title: value.title,
+      description: value.description,
+      worldPremiere: value.worldPremiere,
+      genre: value.genre,
+      translationToRussian: value.translationToRussian,
+      cover: value.cover[0],
+    });
+    addFilm(filmDatas);
   };
 
   return (
@@ -37,10 +55,10 @@ const Inputpage = () => {
           <label>Title:</label>
           <input
             {...register('title', {
-              required: 'Поле обязательно для заполнения',
+              required: 'The field is required',
               minLength: {
                 value: 5,
-                message: 'Минимальная длинная 5 символов',
+                message: 'Minimum length 5 characters',
               },
             })}
           />
@@ -51,10 +69,10 @@ const Inputpage = () => {
           <label>Description:</label>
           <input
             {...register('description', {
-              required: 'Поле обязательно для заполнения',
+              required: 'The field is required',
               minLength: {
                 value: 10,
-                message: 'Минимальная длинная 10 символов',
+                message: 'Minimum length 10 characters',
               },
             })}
           />
@@ -62,13 +80,13 @@ const Inputpage = () => {
             {errors?.description && (errors?.description?.message || 'Error!!!')}
           </div>
         </div>
-        {/* "worldPremiere": "10.09.1994", */}
+        {/* worldPremiere */}
         <div>
           <label>World Premiere:</label>
           <input
             type="date"
             {...register('worldPremiere', {
-              required: 'Поле обязательно для заполнения',
+              required: 'The field is required',
             })}
           />
           <div className="error">
@@ -78,7 +96,7 @@ const Inputpage = () => {
         {/* genre */}
         <div>
           <label>Genre:</label>
-          <select {...register('genre', { required: 'Поле обязательно для заполнения' })}>
+          <select {...register('genre', { required: 'The field is required' })}>
             <option value="">Select genre</option>
             <option value="Drama">Drama</option>
             <option value="Action">Action</option>
@@ -90,26 +108,61 @@ const Inputpage = () => {
           </select>
           <div className="error">{errors?.genre && (errors?.genre?.message || 'Error!!!')}</div>
         </div>
-        {/* "translationToRussian": "yes", */}
+        {/* translationToRussian */}
         <div>
           <label>Translation to Russian:</label>
           <input
             type="radio"
-            value="dor1"
-            {...register('translationToRussian', { validate: { ch: (value) => value } })}
+            value="yes"
+            {...register('translationToRussian', { required: 'Please choose radio' })}
           />
           <label>yes</label>
-          <input type="radio" value="dor2" {...register('translationToRussian')} />
+          <input
+            type="radio"
+            value="no"
+            {...register('translationToRussian', { required: 'Please choose radio' })}
+          />
           <label>no</label>
           <div className="error">
             {errors?.translationToRussian && (errors?.translationToRussian?.message || 'Error!!!')}
           </div>
         </div>
-        {/* "cover": "./covers/The_Shawshank_Redemption.webp" */}
-        {/* appruve */}
+        {/* cover */}
+        <div>
+          <label>Film cover:</label>
+          <input
+            type="file"
+            accept="image/*"
+            {...register('cover', { required: 'Please cover image' })}
+          />
+          <div className="error">{errors?.cover && (errors?.cover?.message || 'Error!!!')}</div>
+        </div>
+        {/* accept */}
+        <div>
+          <label>Accept card upload </label>
+          <input
+            type="checkbox"
+            {...register('accept', { required: 'Input needs to be confirmed' })}
+          />
+          <div className="error">{errors?.accept && (errors?.accept?.message || 'Error!!!')}</div>
+        </div>
         <button type="submit">Submit</button>
       </form>
       <h2>Cards list:</h2>
+      <div className="films__list">
+        {filmDatas.map((item, index) => (
+          <Card3
+            key={String(index)}
+            uuid={String(index)}
+            title={item.title}
+            description={item.description}
+            worldPremiere={item.worldPremiere}
+            genre={item.genre}
+            translationToRussian={item.translationToRussian}
+            image={item.cover}
+          />
+        ))}
+      </div>
     </div>
   );
 };

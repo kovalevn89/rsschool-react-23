@@ -1,43 +1,81 @@
 import React from 'react';
 
-class Card extends React.Component<
-  { mkey: string; thumbnail: string; manufacturer: string; title: string; price: string },
+class Card3 extends React.Component<
+  {
+    uuid: string;
+    title: string;
+    description: string;
+    worldPremiere: string;
+    genre: string;
+    translationToRussian: string;
+    image: File | string;
+  },
   {}
 > {
+  state: { imageSrc: string };
+
   constructor(
     props: Readonly<{
-      mkey: string;
-      thumbnail: string;
-      manufacturer: string;
+      uuid: string;
       title: string;
-      price: string;
+      description: string;
+      worldPremiere: string;
+      genre: string;
+      translationToRussian: string;
+      image: File | string;
     }>
   ) {
     super(props);
+    this.state = { imageSrc: '' };
   }
 
   render() {
+    if (typeof this.props.image !== 'string') {
+      if (this.state.imageSrc === '') {
+        const fr = new FileReader();
+        fr.onload = () => {
+          this.setState({ imageSrc: fr.result });
+        };
+        fr.readAsDataURL(this.props.image!);
+      }
+    }
+
     return (
-      <div key={this.props.mkey} className="product__item">
-        <div className="item__image" style={{ backgroundImage: this.props.thumbnail }}></div>
-        <div className="item__info-block">
-          <div className="info__caption">
-            <span className="caption__brand">{this.props.manufacturer}</span>
-            <span> - </span>
-            <span className="caption__title">{this.props.title}</span>
-          </div>
-          <div className="info__block">
-            <div className="info__block-left"></div>
-            <div className="info__price">
-              <span className="price__currency">$</span>
-              <span className="price__value">{this.props.price}</span>
-            </div>
-          </div>
-          <div className="info__block-right"></div>
+      <div key={this.props.uuid} className="film__card">
+        <img
+          className="film__cover"
+          src={typeof this.props.image === 'string' ? this.props.image : this.state.imageSrc}
+          width="150"
+        ></img>
+        <div className="film__info-block">
+          <table className="film__info-table">
+            <tbody>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">Title:</td>
+                <td className="film__info-table_column-value">{this.props.title}</td>
+              </tr>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">Description:</td>
+                <td className="film__info-table_column-value">{this.props.description}</td>
+              </tr>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">World premiere:</td>
+                <td className="film__info-table_column-value">{this.props.worldPremiere}</td>
+              </tr>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">Genre:</td>
+                <td className="film__info-table_column-value">{this.props.genre}</td>
+              </tr>
+              <tr className="film__info-table_row">
+                <td className="film__info-table_column-caption">Translation to russian:</td>
+                <td className="film__info-table_column-value">{this.props.translationToRussian}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     );
   }
 }
 
-export default Card;
+export default Card3;
