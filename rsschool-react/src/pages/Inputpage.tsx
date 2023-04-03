@@ -6,8 +6,8 @@ import InputTitle from '../components/formControls/inputTitle';
 import InputDescription from '../components/formControls/inputDescription';
 import InputPremiere from '../components/formControls/inputPremiere';
 import InputGenre from '../components/formControls/inputGenre';
-import InputTranslation from '../components/formControls/inputTranslation';
-import InputCover from '../components/formControls/inputCover';
+import InputTranslation from '../components/formControls/inputCover';
+import InputCover from '../components/formControls/inputTranslation';
 import InputAccept from '../components/formControls/inputAccept';
 
 const Inputpage = () => {
@@ -38,7 +38,7 @@ const Inputpage = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>Input product card info:</h2>
+        <h2>Input films card info:</h2>
         <InputTitle reg={register} err={errors} />
         <InputDescription reg={register} err={errors} />
         <InputPremiere reg={register} err={errors} />
@@ -48,7 +48,7 @@ const Inputpage = () => {
         <InputAccept reg={register} err={errors} />
         <button type="submit">Submit</button>
       </form>
-      <h2>Cards list:</h2>
+      {filmDatas.length ? <h2>Films list:</h2> : ''}
       <div className="films__list">
         {filmDatas.map((item, index) => (
           <Card

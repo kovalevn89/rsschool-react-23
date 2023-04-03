@@ -1,4 +1,4 @@
-import React from 'react';
+import { ChangeEvent } from 'react';
 import { useState, useEffect } from 'react';
 
 const Search = () => {
@@ -8,16 +8,13 @@ const Search = () => {
     localStorage.setItem('searchbar', text);
   }, [text]);
 
+  const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    changeText(e.target.value);
+  };
+
   return (
     <div className="search__input">
-      <input
-        type="text"
-        placeholder="Search.."
-        value={text}
-        onChange={(e) => {
-          changeText(e.target.value);
-        }}
-      ></input>
+      <input type="text" placeholder="Search.." value={text} onChange={changeInput}></input>
     </div>
   );
 };

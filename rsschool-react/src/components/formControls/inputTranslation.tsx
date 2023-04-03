@@ -2,13 +2,28 @@ import { InputControl } from '../types/types';
 
 const InputCover = (control: InputControl) => (
   <div>
-    <label>Film cover:</label>
-    <input
-      type="file"
-      accept="image/*"
-      {...control.reg('cover', { required: 'Please cover image' })}
-    />
-    <div className="error">{control.err?.cover && (control.err?.cover?.message || 'Error!!!')}</div>
+    <label className="form__label">
+      <span>Translation to Russian:</span>
+      <label>
+        <input
+          type="radio"
+          value="yes"
+          {...control.reg('translationToRussian', { required: 'Please choose radio' })}
+        />
+        yes
+      </label>
+      <label>
+        <input
+          type="radio"
+          value="no"
+          {...control.reg('translationToRussian', { required: 'Please choose radio' })}
+        />
+        no
+      </label>
+    </label>
+    {control.err.translationToRussian && (
+      <p className="error">{control.err.translationToRussian.message || 'Error!!!'}</p>
+    )}
   </div>
 );
 
