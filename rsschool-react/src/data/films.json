@@ -1,0 +1,58 @@
+{
+	"films": [
+		{
+			"id": 1,
+			"title": "The Green Mile",
+			"description": "A prisoner with a divine gift appears on death row. Mystery drama based on the novel by Stephen King.",
+			"worldPremiere": "6.12.1999",
+			"genre": "drama",
+			"translationToRussian": "yes",
+			"cover": "./covers/The_Green_Mile.webp"
+		},
+		{
+			"id": 2,
+			"title": "The Shawshank Redemption",
+			"description": "Fear is a shackle. Hope is freedom.",
+			"worldPremiere": "10.09.1994",
+			"genre": "drama",
+			"translationToRussian": "yes",
+			"cover": "./covers/The_Shawshank_Redemption.webp"
+		},
+		{
+			"id": 3,
+			"title": "Schindler's List",
+			"description": "The story of a German industrialist who saved thousands of lives during the Holocaust. Drama by Steven Spielberg.",
+			"worldPremiere": "20.11.1993",
+			"genre": "drama, history",
+			"translationToRussian": "yes",
+			"cover": "./covers/Schindlers_List.webp"
+		},
+		{
+			"id": 4,
+			"title": "The Green Mile",
+			"description": "A prisoner with a divine gift appears on death row. Mystery drama based on the novel by Stephen King.",
+			"worldPremiere": "6.12.1999",
+			"genre": "drama",
+			"translationToRussian": "yes",
+			"cover": "./covers/The_Green_Mile.webp"
+		},
+		{
+			"id": 5,
+			"title": "The Shawshank Redemption",
+			"description": "Fear is a shackle. Hope is freedom.",
+			"worldPremiere": "10.09.1994",
+			"genre": "drama",
+			"translationToRussian": "yes",
+			"cover": "./covers/The_Shawshank_Redemption.webp"
+		},
+		{
+			"id": 6,
+			"title": "Schindler's List",
+			"description": "The story of a German industrialist who saved thousands of lives during the Holocaust. Drama by Steven Spielberg.",
+			"worldPremiere": "20.11.1993",
+			"genre": "drama, history",
+			"translationToRussian": "yes",
+			"cover": "./covers/Schindlers_List.webp"
+		}
+	]
+}
