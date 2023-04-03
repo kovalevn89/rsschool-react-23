@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from '../components/search/Search';
-import Card3 from '../components/card/Card';
+import Card from '../components/card/Card';
 import FilmsData from '../data/films.json';
 
 class Mainpage extends React.Component {
@@ -10,7 +10,7 @@ class Mainpage extends React.Component {
         <Search />
         <div className="films__list">
           {FilmsData.films.map((item) => (
-            <Card3
+            <Card
               key={String(item.id)}
               uuid={String(item.id)}
               title={item.title}

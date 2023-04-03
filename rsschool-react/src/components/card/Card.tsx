@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Card3 extends React.Component<
+class Card extends React.Component<
   {
     uuid: string;
     title: string;
@@ -78,4 +78,4 @@ class Card3 extends React.Component<
   }
 }
 
-export default Card3;
+export default Card;
