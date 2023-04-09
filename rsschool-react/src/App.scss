@@ -131,22 +131,27 @@ main {
   .search__input {
     padding: 2% 0;
 
-    input {
-      border-radius: 15px;
+    form {
       width: 30%;
-      margin-left: 2%;
-      border: 2px solid gray;
-      outline: 0px;
+      
+      input {
+        width: 100%;
+        border-radius: 15px;
+        margin-left: 2%;
+        border: 2px solid gray;
+        outline: 0px;
+      }
     }
   }
 
-  .films__list{
+  .result__list{
     margin: 0;
     padding: 0 1%;
     font-family: 'Amazon Ember';
     display: grid;
     grid-auto-rows: min-content;
-    grid-template-columns: repeat(4, 1fr);
+    //grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 15px;
 
     .film__card {

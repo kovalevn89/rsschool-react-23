@@ -49,7 +49,7 @@ const Inputpage = () => {
         <button type="submit">Submit</button>
       </form>
       {filmDatas.length ? <h2>Films list:</h2> : ''}
-      <div className="films__list">
+      <div className="result__list">
         {filmDatas.map((item, index) => (
           <Card
             key={String(index)}
