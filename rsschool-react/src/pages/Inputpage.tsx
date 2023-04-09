@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
-import Card from '../components/card/Card';
+// import Card from '../components/card/Card';
 import { FormInputs, IFilm } from '../components/types/types';
 import InputTitle from '../components/formControls/inputTitle';
 import InputDescription from '../components/formControls/inputDescription';

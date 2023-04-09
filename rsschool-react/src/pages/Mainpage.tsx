@@ -71,9 +71,6 @@ const Mainpage = () => {
           <div /> <div /> <div /> <div />
         </div>
       )}
-      {/* <div className="lds-ring">
-        <div /> <div /> <div /> <div />
-      </div> */}
       <div className="result__list">
         {cards.length <= 0 ? (
           <span>No results found!!!</span>

@@ -1,8 +1,10 @@
 import { ICardRM } from '../types/types';
 import { useState, useEffect } from 'react';
+import ModalCard from '../modal/modal';
 
 const Card = (card: ICardRM) => {
   const [imageSrc, changeText] = useState('');
+  const [isModal, changeModalVisibility] = useState(false);
 
   useEffect(() => {
     if (typeof card.image !== 'string') {
@@ -18,17 +20,12 @@ const Card = (card: ICardRM) => {
     }
   }, [imageSrc, card.image]);
 
-  const clickCard = (id: number) => {
-    console.log('click to card #' + id);
+  const clickCard = () => {
+    changeModalVisibility(!isModal);
   };
 
   return (
-    <div
-      key={card.id}
-      id={String(card.id)}
-      className="card__card"
-      onClick={() => clickCard(card.id)}
-    >
+    <div key={card.id} id={String(card.id)} className="card__card" onClick={() => clickCard()}>
       <img
         className="card__cover"
         src={typeof card.image === 'string' ? card.image : imageSrc}
@@ -57,27 +54,12 @@ const Card = (card: ICardRM) => {
               <td className="card__info-table_column-caption">Gender:</td>
               <td className="card__info-table_column-value">{card.gender}</td>
             </tr>
-            <tr className="card__info-table_row">
-              <td className="card__info-table_column-caption">Origin:</td>
-              <td className="card__info-table_column-value">{card.origin.name}</td>
-            </tr>
-            <tr className="card__info-table_row">
-              <td className="card__info-table_column-caption">Location:</td>
-              <td className="card__info-table_column-value">{card.location.name}</td>
-            </tr>
-            <tr className="card__info-table_row">
-              <td className="card__info-table_column-caption">Created:</td>
-              <td className="card__info-table_column-value">{card.created}</td>
-            </tr>
           </tbody>
         </table>
+        {isModal && <ModalCard id={card.id} />}
       </div>
     </div>
   );
 };
 
 export default Card;
-
-// episode: Array<string>;
-// url: string;
-// created: string;
