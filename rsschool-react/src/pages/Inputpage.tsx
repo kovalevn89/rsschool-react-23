@@ -50,7 +50,7 @@ const Inputpage = () => {
       </form>
       {filmDatas.length ? <h2>Films list:</h2> : ''}
       <div className="result__list">
-        {filmDatas.map((item, index) => (
+        {/* {filmDatas.map((item, index) => (
           <Card
             key={String(index)}
             uuid={String(index)}
@@ -61,7 +61,7 @@ const Inputpage = () => {
             translationToRussian={item.translationToRussian}
             image={item.cover}
           />
-        ))}
+        ))} */}
       </div>
     </div>
   );

@@ -29,15 +29,15 @@ export interface IFilm {
   cover: File | string;
 }
 
-export interface ICard {
-  uuid: string;
-  title: string;
-  description: string;
-  worldPremiere: string;
-  genre: string;
-  translationToRussian: string;
-  image: File | string;
-}
+// export interface ICard {
+//   uuid: string;
+//   title: string;
+//   description: string;
+//   worldPremiere: string;
+//   genre: string;
+//   translationToRussian: string;
+//   image: File | string;
+// }
 
 interface ICardOrigin {
   name: string;

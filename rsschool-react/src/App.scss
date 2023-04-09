@@ -154,23 +154,23 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 15px;
 
-    .film__card {
+    .card__card {
       padding: 10px;
       background-color: white;
       box-shadow: 5px 5px 5px rgb(219, 217, 217);
       border-radius: 20px;
 
-      .film__cover {
+      .card__cover {
         border-radius: 4px;
       }
 
-      .film__info-block {
-        .film__info-table {
-          .film__info-table_row {
+      .card__info-block {
+        .card__info-table {
+          .card__info-table_row {
             &:nth-child(2n - 1) {
               background-color: #ebf0fa;
             }
-            .film__info-table_column-caption {
+            .card__info-table_column-caption {
               vertical-align: top;
               text-align: right;
               color: dimgray;
@@ -178,7 +178,7 @@ main {
               width: 40%;
             }
 
-            .film__info-table_column-value {
+            .card__info-table_column-value {
               text-align: left;
               padding-left: 3px;
             }
@@ -211,3 +211,42 @@ main {
     content: "⚠ ";
   }
 }
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #7492d8;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #7492d8 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+// <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
