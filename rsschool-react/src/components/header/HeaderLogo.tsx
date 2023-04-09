@@ -1,6 +1,6 @@
 const HeaderLogo = () => (
   <div className="logo__box">
-    <p>MovieBox</p>
+    <p>Rick&Morty</p>
   </div>
 );
 

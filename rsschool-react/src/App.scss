@@ -166,6 +166,7 @@ main {
 
       .card__info-block {
         .card__info-table {
+          width: 100%;
           .card__info-table_row {
             &:nth-child(2n - 1) {
               background-color: #ebf0fa;

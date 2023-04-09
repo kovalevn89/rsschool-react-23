@@ -5,6 +5,6 @@ import { render, screen } from '@testing-library/react';
 describe('HeaderLogo test', () => {
   it('Check HeaderLogo render very well', () => {
     render(<HeaderLogo />);
-    expect(screen.getByText(/MovieBox/i)).toBeInTheDocument();
+    expect(screen.getByText(/Rick&Morty/i)).toBeInTheDocument();
   });
 });
