@@ -1,12 +1,8 @@
 import ReactDOM from 'react-dom';
 import { getCharacterWithID } from '../../api/api';
 import { useEffect, useState } from 'react';
-import { ICardRM } from '../../components/types/types';
+import { ICardRM, ICardId } from '../../components/types/types';
 import CardFull from '../card/CardFull';
-
-interface ICardId {
-  id: number;
-}
 
 const ModalCard = (cardId: ICardId) => {
   const [card, changeCard] = useState(Array<ICardRM>);
@@ -24,13 +20,17 @@ const ModalCard = (cardId: ICardId) => {
     getCharacter();
   }, [cardId.id]);
 
+  const onClickClose = () => {
+    cardId.callback();
+  };
+
   return ReactDOM.createPortal(
     <div id="openModal" className="modal">
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
             <h3 className="modal-title">Character full info:</h3>
-            <div title="Close" className="close">
+            <div title="Close" className="close" onClick={onClickClose}>
               x
             </div>
           </div>

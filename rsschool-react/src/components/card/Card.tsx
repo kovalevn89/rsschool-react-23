@@ -21,7 +21,13 @@ const Card = (card: ICardRM) => {
   }, [imageSrc, card.image]);
 
   const clickCard = () => {
-    changeModalVisibility(!isModal);
+    if (isModal === false) {
+      changeModalVisibility(true);
+    }
+  };
+
+  const hiddenCard = () => {
+    changeModalVisibility(false);
   };
 
   return (
@@ -56,7 +62,7 @@ const Card = (card: ICardRM) => {
             </tr>
           </tbody>
         </table>
-        {isModal && <ModalCard id={card.id} />}
+        {isModal && <ModalCard id={card.id} callback={hiddenCard} />}
       </div>
     </div>
   );

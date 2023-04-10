@@ -1,34 +1,8 @@
 import Search from '../components/mainPage/Search';
 import Card from '../components/card/Card';
-// import FilmsData from '../data/films.json';
 import { useEffect, useState } from 'react';
 import { ICardRM } from '../components/types/types';
-
-// const Mainpage = () => (
-//   <div data-testid="mainpage-id">
-//     <Search />
-//     <div className="films__list">
-//       {FilmsData.films.map((item) => (
-//         <Card
-//           key={String(item.id)}
-//           uuid={String(item.id)}
-//           title={item.title}
-//           description={item.description}
-//           worldPremiere={item.worldPremiere}
-//           genre={item.genre}
-//           translationToRussian={item.translationToRussian}
-//           image={item.cover}
-//         />
-//       ))}
-//     </div>
-//   </div>
-// );
-
 import { getAllCharacter, searchCharacter } from '../api/api';
-
-// interface ISearch {
-//   query: string;
-// }
 
 const Mainpage = () => {
   const [query, changeQuery] = useState(localStorage.getItem('searchbar') || '');

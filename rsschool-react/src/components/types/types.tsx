@@ -63,3 +63,8 @@ export interface ICardRM {
   url: string;
   created: string;
 }
+
+export interface ICardId {
+  id: number;
+  callback: () => void;
+}

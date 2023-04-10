@@ -302,6 +302,7 @@ main {
           text-shadow: 0 1px 0 #ffffff;
           opacity: 0.5;
           text-decoration: none;
+          user-select: none;
     
           &:focus,
           &:hover {
