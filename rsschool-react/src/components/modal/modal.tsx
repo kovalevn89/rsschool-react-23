@@ -10,15 +10,15 @@ interface ICardId {
 
 const ModalCard = (cardId: ICardId) => {
   const [card, changeCard] = useState(Array<ICardRM>);
+  const [isLoading, changeLoading] = useState(false);
 
   useEffect(() => {
     const getCharacter = async () => {
-      // changeLoading(true);
+      changeLoading(true);
       const result = await getCharacterWithID(cardId.id);
-      // changeLoading(false);
+      changeLoading(false);
 
       result !== undefined ? changeCard(Array.of(result)) : changeCard([]);
-      // console.log(Array.of(result));
     };
 
     getCharacter();
@@ -35,6 +35,11 @@ const ModalCard = (cardId: ICardId) => {
             </div>
           </div>
           <div className="modal-body">
+            {isLoading && (
+              <div className="lds-ring">
+                <div /> <div /> <div /> <div />
+              </div>
+            )}
             {card.length && (
               <CardFull
                 key={String(card[0].id)}

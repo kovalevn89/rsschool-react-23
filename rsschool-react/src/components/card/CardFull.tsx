@@ -1,23 +1,6 @@
 import { ICardRM } from '../types/types';
-// import { useState, useEffect } from 'react';
 
 const CardFull = (card: ICardRM) => {
-  // const [imageSrc, changeText] = useState('');
-
-  // useEffect(() => {
-  //   if (typeof card.image !== 'string') {
-  //     if (imageSrc === '') {
-  //       const fr = new FileReader();
-  //       fr.onload = () => {
-  //         if (typeof fr.result === 'string') {
-  //           changeText(fr.result);
-  //         }
-  //       };
-  //       fr.readAsDataURL(card.image!);
-  //     }
-  //   }
-  // }, [imageSrc, card.image]);
-
   return (
     <div key={card.id} id={String(card.id)} className="card__card">
       <img className="card__cover" src={card.image} width="150"></img>
