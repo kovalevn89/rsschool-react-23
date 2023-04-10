@@ -40,7 +40,7 @@ const ModalCard = (cardId: ICardId) => {
                 <div /> <div /> <div /> <div />
               </div>
             )}
-            {card.length && (
+            {card.length > 0 ? (
               <CardFull
                 key={String(card[0].id)}
                 id={card[0].id}
@@ -56,6 +56,8 @@ const ModalCard = (cardId: ICardId) => {
                 url={card[0].url}
                 created={card[0].created}
               />
+            ) : (
+              <span></span>
             )}
           </div>
         </div>
