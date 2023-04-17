@@ -1,6 +1,5 @@
 import Search from '../components/mainPage/Search';
 import Card from '../components/card/Card';
-import { useEffect } from 'react';
 import { ICardRM } from '../components/types/types';
 import { getAllCharacter, searchCharacter } from '../api/api';
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,23 +21,17 @@ const Mainpage = () => {
 
   const changeQueryCallback = (updateQuery: string) => {
     dispatch(setQuery(updateQuery));
-    console.log('TEST');
 
     const getCharacter = async () => {
       dispatch(setLoadState(true));
       const result = await (query === '' ? getAllCharacter() : searchCharacter(query));
       dispatch(setLoadState(false));
 
-      console.log(result);
       dispatch(setCard(result || []));
     };
 
     getCharacter();
   };
-
-  useEffect(() => {
-    console.log('useEffect');
-  }, []);
 
   return (
     <div data-testid="mainpage-id">
@@ -49,7 +42,7 @@ const Mainpage = () => {
         </div>
       )}
       <div className="result__list">
-        {cards.length === 0 ? (
+        {!cards ? (
           <span>No results found!!!</span>
         ) : (
           cards.map((item) => (

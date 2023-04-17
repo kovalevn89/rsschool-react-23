@@ -1,40 +1,25 @@
 import { ICardRM } from '../types/types';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ModalCard from '../modal/modal';
 
 const Card = (card: ICardRM) => {
-  const [imageSrc, changeText] = useState('');
   const [isModal, changeModalVisibility] = useState(false);
 
-  useEffect(() => {
-    if (typeof card.image !== 'string') {
-      if (imageSrc === '') {
-        const fr = new FileReader();
-        fr.onload = () => {
-          if (typeof fr.result === 'string') {
-            changeText(fr.result);
-          }
-        };
-        fr.readAsDataURL(card.image!);
-      }
-    }
-  }, [imageSrc, card.image]);
-
-  const clickCard = () => {
-    if (isModal === false) {
-      changeModalVisibility(true);
-    }
-  };
-
-  const hiddenCard = () => {
-    changeModalVisibility(false);
-  };
-
   return (
-    <div key={card.id} id={String(card.id)} className="card__card" onClick={() => clickCard()}>
+    <div
+      key={card.id}
+      id={String(card.id)}
+      className="card__card"
+      onClick={() => {
+        if (isModal === false) {
+          changeModalVisibility(true);
+        }
+      }}
+    >
       <img
         className="card__cover"
-        src={typeof card.image === 'string' ? card.image : imageSrc}
+        //src={typeof card.image === 'string' ? card.image : imageSrc}
+        src={card.image}
         width="150"
       ></img>
       <div className="card__info-block">
@@ -62,7 +47,7 @@ const Card = (card: ICardRM) => {
             </tr>
           </tbody>
         </table>
-        {isModal && <ModalCard id={card.id} callback={hiddenCard} />}
+        {isModal && <ModalCard id={card.id} callback={() => changeModalVisibility(false)} />}
       </div>
     </div>
   );
