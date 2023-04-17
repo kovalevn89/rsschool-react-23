@@ -1,18 +1,26 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
+import { ICardRM } from '../../components/types/types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setQuery } from '../../store/searchSlice';
 
 interface ISearch {
   callback: (updateQuery: string) => void;
 }
 
-const Search = (searchQuery: ISearch) => {
-  const [text, changeText] = useState(localStorage.getItem('searchbar') || '');
+interface RootState {
+  search: {
+    queryString: string;
+    isLoading: false;
+    cards: ICardRM[];
+  };
+}
 
-  useEffect(() => {
-    localStorage.setItem('searchbar', text);
-  }, [text]);
+const Search = (searchQuery: ISearch) => {
+  const dispatch = useDispatch();
+  const text = useSelector((state: RootState) => state.search.queryString);
 
   const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    changeText(e.target.value);
+    dispatch(setQuery(e.target.value));
   };
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {

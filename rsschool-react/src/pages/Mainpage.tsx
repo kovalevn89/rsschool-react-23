@@ -1,10 +1,10 @@
 import Search from '../components/mainPage/Search';
 import Card from '../components/card/Card';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { ICardRM } from '../components/types/types';
 import { getAllCharacter, searchCharacter } from '../api/api';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCard, setLoadState } from '../store/searchSlice';
+import { setCard, setLoadState, setQuery } from '../store/searchSlice';
 
 interface RootState {
   search: {
@@ -15,42 +15,30 @@ interface RootState {
 }
 
 const Mainpage = () => {
-  const [query, changeQuery] = useState(localStorage.getItem('searchbar') || '');
-  //const [cards, changeCards] = useState(Array<ICardRM>);
-  //const [isLoading, changeLoading] = useState(false);
-
   const dispatch = useDispatch();
   const cards = useSelector((state: RootState) => state.search.cards);
   const isLoading = useSelector((state: RootState) => state.search.isLoading);
+  const query = useSelector((state: RootState) => state.search.queryString);
 
   const changeQueryCallback = (updateQuery: string) => {
-    changeQuery(updateQuery);
-    //console.log('TEST');
+    dispatch(setQuery(updateQuery));
+    console.log('TEST');
+
+    const getCharacter = async () => {
+      dispatch(setLoadState(true));
+      const result = await (query === '' ? getAllCharacter() : searchCharacter(query));
+      dispatch(setLoadState(false));
+
+      console.log(result);
+      dispatch(setCard(result || []));
+    };
+
+    getCharacter();
   };
 
   useEffect(() => {
-    if (query === '') {
-      const getCharacter = async () => {
-        dispatch(setLoadState(true));
-        const result = await getAllCharacter();
-        dispatch(setLoadState(false));
-
-        dispatch(setCard(result || []));
-      };
-
-      getCharacter();
-    } else {
-      const getCharacter = async () => {
-        dispatch(setLoadState(true));
-        const result = await searchCharacter(query);
-        dispatch(setLoadState(false));
-
-        dispatch(setCard(result || []));
-      };
-
-      getCharacter();
-    }
-  }, [query]);
+    console.log('useEffect');
+  }, []);
 
   return (
     <div data-testid="mainpage-id">

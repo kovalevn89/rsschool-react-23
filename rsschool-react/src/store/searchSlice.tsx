@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ICardRM } from '../components/types/types';
+import { getAllCharacter, searchCharacter } from '../api/api';
 
 const searchSlice = createSlice({
   name: 'search',
   initialState: {
-    queryString: '',
+    queryString: localStorage.getItem('searchbar') || '',
     isLoading: false,
-    cards: [] as ICardRM[],
+    cards: await (localStorage.getItem('searchbar') === ''
+      ? getAllCharacter()
+      : searchCharacter(localStorage.getItem('searchbar')!)),
   },
   reducers: {
     setCard(state, action) {
@@ -18,8 +20,12 @@ const searchSlice = createSlice({
     setLoadState(state, action) {
       state.isLoading = action.payload;
     },
+    setQuery(state, action) {
+      state.queryString = action.payload;
+      localStorage.setItem('searchbar', state.queryString);
+    },
   },
 });
 
-export const { setCard, clearCards, setLoadState } = searchSlice.actions;
+export const { setCard, clearCards, setLoadState, setQuery } = searchSlice.actions;
 export default searchSlice.reducer;
