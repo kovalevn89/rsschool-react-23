@@ -3,11 +3,20 @@ import Card from '../components/card/Card';
 import { useEffect, useState } from 'react';
 import { ICardRM } from '../components/types/types';
 import { getAllCharacter, searchCharacter } from '../api/api';
+import { useSelector } from 'react-redux';
+
+interface RootState {
+  cards: Array<ICardRM>;
+}
+
+const selectAllCards = (state: RootState) => state.cards;
 
 const Mainpage = () => {
   const [query, changeQuery] = useState(localStorage.getItem('searchbar') || '');
-  const [cards, changeCards] = useState(Array<ICardRM>);
+  //const [cards, changeCards] = useState(Array<ICardRM>);
   const [isLoading, changeLoading] = useState(false);
+
+  const cards = useSelector(selectAllCards);
 
   const changeQueryCallback = (updateQuery: string) => {
     changeQuery(updateQuery);
