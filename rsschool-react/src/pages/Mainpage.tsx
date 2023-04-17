@@ -3,43 +3,49 @@ import Card from '../components/card/Card';
 import { useEffect, useState } from 'react';
 import { ICardRM } from '../components/types/types';
 import { getAllCharacter, searchCharacter } from '../api/api';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCard, setLoadState } from '../store/searchSlice';
 
 interface RootState {
-  cards: Array<ICardRM>;
+  search: {
+    queryString: string;
+    isLoading: false;
+    cards: ICardRM[];
+  };
 }
-
-const selectAllCards = (state: RootState) => state.cards;
 
 const Mainpage = () => {
   const [query, changeQuery] = useState(localStorage.getItem('searchbar') || '');
   //const [cards, changeCards] = useState(Array<ICardRM>);
-  const [isLoading, changeLoading] = useState(false);
+  //const [isLoading, changeLoading] = useState(false);
 
-  const cards = useSelector(selectAllCards);
+  const dispatch = useDispatch();
+  const cards = useSelector((state: RootState) => state.search.cards);
+  const isLoading = useSelector((state: RootState) => state.search.isLoading);
 
   const changeQueryCallback = (updateQuery: string) => {
     changeQuery(updateQuery);
+    //console.log('TEST');
   };
 
   useEffect(() => {
     if (query === '') {
       const getCharacter = async () => {
-        changeLoading(true);
+        dispatch(setLoadState(true));
         const result = await getAllCharacter();
-        changeLoading(false);
+        dispatch(setLoadState(false));
 
-        result !== undefined ? changeCards(result) : changeCards([]);
+        dispatch(setCard(result || []));
       };
 
       getCharacter();
     } else {
       const getCharacter = async () => {
-        changeLoading(true);
+        dispatch(setLoadState(true));
         const result = await searchCharacter(query);
-        changeLoading(false);
+        dispatch(setLoadState(false));
 
-        result !== undefined ? changeCards(result) : changeCards([]);
+        dispatch(setCard(result || []));
       };
 
       getCharacter();
@@ -55,7 +61,7 @@ const Mainpage = () => {
         </div>
       )}
       <div className="result__list">
-        {cards.length <= 0 ? (
+        {cards.length === 0 ? (
           <span>No results found!!!</span>
         ) : (
           cards.map((item) => (

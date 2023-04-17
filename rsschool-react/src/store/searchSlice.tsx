@@ -1,23 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ICardRM } from '../components/types/types';
 
-const initialState = {
-  queryString: '',
-  cards: [] as Array<ICardRM>,
-};
-
 const searchSlice = createSlice({
   name: 'search',
-  initialState,
+  initialState: {
+    queryString: '',
+    isLoading: false,
+    cards: [] as ICardRM[],
+  },
   reducers: {
-    addCard(state, action) {
-      state.cards.push(action.payload.card);
+    setCard(state, action) {
+      state.cards = action.payload;
     },
-    clearCards(state, action) {
+    clearCards(state) {
       state.cards = [];
+    },
+    setLoadState(state, action) {
+      state.isLoading = action.payload;
     },
   },
 });
 
-export const { addCard, clearCards } = searchSlice.actions;
+export const { setCard, clearCards, setLoadState } = searchSlice.actions;
 export default searchSlice.reducer;
