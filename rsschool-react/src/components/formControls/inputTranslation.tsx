@@ -3,7 +3,7 @@ import { InputControl } from '../types/types';
 const InputCover = (control: InputControl) => (
   <div>
     <label className="form__label">
-      <span>Translation to Russian:</span>
+      <span>Alive:</span>
       <label>
         <input
           type="radio"

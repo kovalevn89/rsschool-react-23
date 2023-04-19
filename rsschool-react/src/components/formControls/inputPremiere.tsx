@@ -3,7 +3,7 @@ import { InputControl } from '../types/types';
 const InputPremiere = (control: InputControl) => (
   <div>
     <label className="form__label">
-      <span>World Premiere:</span>
+      <span>Date:</span>
       <input
         className="singleInput"
         type="date"

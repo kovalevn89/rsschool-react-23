@@ -1,9 +1,19 @@
 import Search from '../components/mainPage/Search';
 import Card from '../components/card/Card';
-import { ICardsAnwer, RootState } from '../components/types/types';
+import { ICardRM, RootState } from '../components/types/types';
 import { useSelector, useDispatch } from 'react-redux';
 import { setQuery } from '../store/searchSlice';
 import { useGetCardsQuery } from '../api/api';
+
+export interface ICardsAnwer {
+  info: {
+    count: number;
+    next: string;
+    pages: number;
+    prev: string;
+  };
+  results: ICardRM[];
+}
 
 const Mainpage = () => {
   const dispatch = useDispatch();

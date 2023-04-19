@@ -3,7 +3,7 @@ import { InputControl } from '../types/types';
 const InputCover = (control: InputControl) => (
   <div>
     <label className="form__label">
-      <span>Film cover:</span>
+      <span>Image:</span>
       <input
         className="singleInput"
         type="file"

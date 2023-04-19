@@ -1,7 +1,3 @@
-export type HeaderPath = {
-  path: string;
-};
-
 interface ICardOrigin {
   name: string;
   url: string;
@@ -30,16 +26,6 @@ export interface ICardRM {
 export interface ICardId {
   id: number;
   callback: () => void;
-}
-
-export interface ICardsAnwer {
-  info: {
-    count: number;
-    next: string;
-    pages: number;
-    prev: string;
-  };
-  results: ICardRM[];
 }
 
 export interface RootState {

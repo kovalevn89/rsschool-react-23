@@ -16,12 +16,7 @@ const Card = (card: ICardRM) => {
         }
       }}
     >
-      <img
-        className="card__cover"
-        //src={typeof card.image === 'string' ? card.image : imageSrc}
-        src={card.image}
-        width="150"
-      ></img>
+      <img className="card__cover" src={card.image} width="150"></img>
       <div className="card__info-block">
         <table className="card__info-table">
           <tbody>
