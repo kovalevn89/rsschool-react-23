@@ -5,7 +5,6 @@ import Mainpage from './pages/Mainpage';
 import Aboutpage from './pages/Aboutpage.jsx';
 import Errorpage from './pages/Errorpage.jsx';
 import Inputpage from './pages/Inputpage.jsx';
-
 import { Provider } from 'react-redux';
 import store from './store/store';
 

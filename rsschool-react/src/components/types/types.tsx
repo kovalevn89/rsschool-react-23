@@ -31,3 +31,21 @@ export interface ICardId {
   id: number;
   callback: () => void;
 }
+
+export interface ICardsAnwer {
+  info: {
+    count: number;
+    next: string;
+    pages: number;
+    prev: string;
+  };
+  results: ICardRM[];
+}
+
+export interface RootState {
+  search: {
+    queryString: string;
+    isLoading: false;
+    cards: ICardRM[];
+  };
+}

@@ -1,36 +1,18 @@
 import Search from '../components/mainPage/Search';
 import Card from '../components/card/Card';
-import { ICardRM } from '../components/types/types';
-import { getAllCharacter, searchCharacter } from '../api/api';
+import { ICardsAnwer, RootState } from '../components/types/types';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCard, setLoadState, setQuery } from '../store/searchSlice';
-
-interface RootState {
-  search: {
-    queryString: string;
-    isLoading: false;
-    cards: ICardRM[];
-  };
-}
+import { setQuery } from '../store/searchSlice';
+import { useGetCardsQuery } from '../api/api';
 
 const Mainpage = () => {
   const dispatch = useDispatch();
-  const cards = useSelector((state: RootState) => state.search.cards);
-  const isLoading = useSelector((state: RootState) => state.search.isLoading);
   const query = useSelector((state: RootState) => state.search.queryString);
+
+  const { data = [], isLoading, isError } = useGetCardsQuery(query);
 
   const changeQueryCallback = (updateQuery: string) => {
     dispatch(setQuery(updateQuery));
-
-    const getCharacter = async () => {
-      dispatch(setLoadState(true));
-      const result = await (query === '' ? getAllCharacter() : searchCharacter(query));
-      dispatch(setLoadState(false));
-
-      dispatch(setCard(result || []));
-    };
-
-    getCharacter();
   };
 
   return (
@@ -42,10 +24,10 @@ const Mainpage = () => {
         </div>
       )}
       <div className="result__list">
-        {!cards ? (
+        {!(data as ICardsAnwer).results || isError ? (
           <span>No results found!!!</span>
         ) : (
-          cards.map((item) => (
+          (data as ICardsAnwer).results.map((item) => (
             <Card
               key={String(item.id)}
               id={item.id}

@@ -1,24 +1,10 @@
 import ReactDOM from 'react-dom';
-import { getCharacterWithID } from '../../api/api';
-import { useEffect, useState } from 'react';
 import { ICardRM, ICardId } from '../../components/types/types';
 import CardFull from '../card/CardFull';
+import { useGetCardsWithIDQuery } from '../../api/api';
 
 const ModalCard = (cardId: ICardId) => {
-  const [card, changeCard] = useState(Array<ICardRM>);
-  const [isLoading, changeLoading] = useState(false);
-
-  useEffect(() => {
-    const getCharacter = async () => {
-      changeLoading(true);
-      const result = await getCharacterWithID(cardId.id);
-      changeLoading(false);
-
-      result !== undefined ? changeCard(Array.of(result)) : changeCard([]);
-    };
-
-    getCharacter();
-  }, [cardId.id]);
+  const { data = { id: -1 }, isLoading } = useGetCardsWithIDQuery(String(cardId.id));
 
   const onClickClose = () => {
     cardId.callback();
@@ -40,21 +26,24 @@ const ModalCard = (cardId: ICardId) => {
                 <div /> <div /> <div /> <div />
               </div>
             )}
-            {card.length > 0 ? (
+            {data.id !== -1 ? (
               <CardFull
-                key={String(card[0].id)}
-                id={card[0].id}
-                name={card[0].name}
-                status={card[0].status}
-                species={card[0].species}
-                type={card[0].type}
-                gender={card[0].gender}
-                origin={{ name: card[0].origin.name, url: card[0].origin.url }}
-                location={{ name: card[0].location.name, url: card[0].location.url }}
-                image={card[0].image}
-                episode={card[0].episode}
-                url={card[0].url}
-                created={card[0].created}
+                key={String(data.id)}
+                id={data.id}
+                name={(data as ICardRM).name}
+                status={(data as ICardRM).status}
+                species={(data as ICardRM).species}
+                type={(data as ICardRM).type}
+                gender={(data as ICardRM).gender}
+                origin={{ name: (data as ICardRM).origin.name, url: (data as ICardRM).origin.url }}
+                location={{
+                  name: (data as ICardRM).location.name,
+                  url: (data as ICardRM).location.url,
+                }}
+                image={(data as ICardRM).image}
+                episode={(data as ICardRM).episode}
+                url={(data as ICardRM).url}
+                created={(data as ICardRM).created}
               />
             ) : (
               <span></span>

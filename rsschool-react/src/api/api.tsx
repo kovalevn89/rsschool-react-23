@@ -1,49 +1,17 @@
-import axios from 'axios';
-import { AxiosError } from 'axios';
-import { ICardRM } from '../components/types/types';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { ICardRM, ICardsAnwer } from '../components/types/types';
 
-const BASE_URL = 'https://rickandmortyapi.com/api';
-const GET_CHARACTER = '/character/';
-const SEARCH_CHARACTER = '/character/?name=';
+export const cardsApi = createApi({
+  reducerPath: 'cards',
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/api/' }),
+  endpoints: (build) => ({
+    getCards: build.query<ICardsAnwer, string>({
+      query: (name = '') => `character?${name && `name=${name}`}`,
+    }),
+    getCardsWithID: build.query<ICardRM, string>({
+      query: (id = '') => `character/${id}`,
+    }),
+  }),
+});
 
-export const getAllCharacter = async (): Promise<ICardRM[] | undefined> => {
-  try {
-    const res = await axios.get(BASE_URL + GET_CHARACTER);
-
-    if (res.status === 200) {
-      return res.data.results;
-    }
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      console.log(error!.message);
-    }
-  }
-};
-
-export const searchCharacter = async (query: string): Promise<ICardRM[] | undefined> => {
-  try {
-    const res = await axios.get(BASE_URL + SEARCH_CHARACTER + query);
-
-    if (res.status === 200) {
-      return res.data.results;
-    }
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      console.log(error!.message);
-    }
-  }
-};
-
-export const getCharacterWithID = async (id: number): Promise<ICardRM | undefined> => {
-  try {
-    const res = await axios.get(BASE_URL + GET_CHARACTER + String(id));
-
-    if (res.status === 200) {
-      return res.data;
-    }
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      console.log(error!.message);
-    }
-  }
-};
+export const { useGetCardsQuery, useGetCardsWithIDQuery } = cardsApi;
