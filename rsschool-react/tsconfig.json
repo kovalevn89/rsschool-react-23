@@ -17,6 +17,6 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "Node",
   },
-  "include": ["src"],
+  "include": ["src", "server.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }
