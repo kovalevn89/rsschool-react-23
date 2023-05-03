@@ -1,9 +1,9 @@
 import React from 'react';
+import App from './App';
+import store from './store/store';
 import { renderToPipeableStream } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
-import App from './App';
 import { Provider } from 'react-redux';
-import store from './store/store';
 
 export const render = (url: string, opts?: object) => {
   return renderToPipeableStream(

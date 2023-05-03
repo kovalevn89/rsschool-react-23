@@ -1,12 +1,21 @@
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
 
-const port = 3000;
+const PORT = 3000;
 
-const temp = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Rick&Morty</title></head><body><div id="root">
-    <!--ssr-->
-    </div><script type="module" src="/src/entry-client.tsx"></script></body></html>`;
+const templateHtml = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rick&Morty</title>
+  </head>
+  <body>
+    <div id="root"><!--ssr--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
+  </body>
+</html>
+`;
 
 async function createServer() {
   const app = express();
@@ -22,7 +31,7 @@ async function createServer() {
     const url = req.originalUrl;
 
     try {
-      const template = await vite.transformIndexHtml(url, temp);
+      const template = await vite.transformIndexHtml(url, templateHtml);
       const renderedHtml = template.split(`<!--ssr-->`);
 
       res.write(renderedHtml[0]);
@@ -41,8 +50,8 @@ async function createServer() {
     }
   });
 
-  app.listen(port, () => {
-    console.log(`Server started at http://localhost:${port}`);
+  app.listen(PORT, () => {
+    console.log(`Server started at http://localhost:${PORT}`);
   });
 }
 
